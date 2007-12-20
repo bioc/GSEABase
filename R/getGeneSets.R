@@ -52,7 +52,7 @@
                              .mkSplit(attrs[["CATEGORY_CODE"]])
                          category <- subcategory <- as.character(NA)
                          if (length(categories)>=1)
-                             category <- categories[[1]]
+                             category <- tolower(categories[[1]])
                          if (length(categories)>=2)
                              subcategory <- categories[[2]]
                          if (length(categories)>2)
@@ -82,7 +82,7 @@
                 collapse=.BROAD_SEPARATOR),
               CATEGORY_CODE={
                   ct <- collectionType(geneSet)
-                  category <- bcCategory(ct)
+                  category <- toupper(bcCategory(ct))
                   subcategory <- bcSubCategory(ct)
                   paste(if (is.na(category)) NULL else category,
                         if (is.na(subcategory)) NULL else subcategory,
