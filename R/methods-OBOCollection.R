@@ -189,12 +189,13 @@ setAs("OBOCollection", "graphNEL",
           s <- .stanza(from)
           k <- .kv(from)
           nodes <- .OBOids(s)
-          edgeL <- rep(list(list(edges=numeric())), length(nodes))
+          edgeL <- rep(list(list(edges=integer())), length(nodes))
           names(edgeL) <- nodes
           df <- k[k$key=="is_a" & k$value %in% nodes,
                   !names(k)=="key",drop=FALSE]
           f <- function(x) list(edges=as.character(x))
-          edgeL[df$stanza_id] <- lapply(df$value, f)
+          sid <- as.factor(df$stanza_id)
+          edgeL[levels(sid)] <- lapply(split(df$value, sid), f)
           new("graphNEL", nodes, edgeL, "directed")
       })
 
