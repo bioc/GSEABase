@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.34.1
+-------------------------
+
+BUG FIXES
+
+    o some multi-line warnings and errors would fail without reporting
+    the error message.
+
 CHANGES IN VERSION 1.31
 -----------------------
 
@@ -6,7 +14,6 @@ SIGNIFICANT USER-VISIBLE CHANGES
     o Support 'h' Broad set
 
 BUG FIXES
----------
 
     o as(OBOCollection, "graphNEL") failed to include multiple
     children
